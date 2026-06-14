@@ -26,7 +26,7 @@ async def test_normal_mode(dut):
     dut.ui_in.value  = (8 << 2) & 0xFF
     dut.uio_in.value = 3
 
-    await ClockCycles(dut.clk, 2)
+    await ClockCycles(dut.clk, 20)  # mas ciclos para gate-level timing
 
     result_bits = (int(dut.uo_out.value) >> 3) & 0x1F
     cocotb.log.info(f"8 + 3 = {result_bits} (esperado 11)")
