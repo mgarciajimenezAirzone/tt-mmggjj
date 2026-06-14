@@ -1,12 +1,11 @@
 # Tiny Tapeout project information
-
 project:
-  title: "BIST-8: Built-In Self-Test for 8-bit CLA Adder"
-  author: "Mario Garcia Jimenez"
-  discord: ""
-  description: "BIST architecture for an 8-bit Carry-Lookahead Adder. Includes 12-bit LFSR pattern generator, 16-bit MISR response compactor, fault injection, and 4-state FSM controller."
-  language: "Verilog"
-  clock_hz: 10000000  # 10MHz nominal (TT IHP)
+  title:       "BIST-8: Built-In Self-Test for 8-bit CLA Adder"
+  author:      "Mario Garcia Jimenez"
+  discord:     ""
+  description: "BIST architecture for an 8-bit Carry-Lookahead Adder. Includes 12-bit LFSR pattern generator, 16-bit MISR response compactor, fault injection and 4-state FSM controller. Golden signature 0xCF77."
+  language:    "Verilog"
+  clock_hz:    10000000
 
   tiles: "1x1"
 
@@ -17,35 +16,30 @@ project:
     - "bist8_tt.v"
 
   pinout:
-    # Inputs
-    ui[0]: "bist_en (1=BIST mode, 0=normal)"
-    ui[1]: "fault_inject (SA0 on bit3)"
+    ui[0]: "bist_en"
+    ui[1]: "fault_inject"
     ui[2]: "a_in[0]"
     ui[3]: "a_in[1]"
     ui[4]: "a_in[2]"
     ui[5]: "a_in[3]"
     ui[6]: "a_in[4]"
     ui[7]: "a_in[5]"
-
-    # Outputs
     uo[0]: "bist_pass"
     uo[1]: "bist_fail"
     uo[2]: "bist_done"
-    uo[3]: "sum_out[3] (normal mode)"
-    uo[4]: "sum_out[4] (normal mode)"
-    uo[5]: "sum_out[5] (normal mode)"
-    uo[6]: "sum_out[6] (normal mode)"
-    uo[7]: "sum_out[7] (normal mode)"
-
-    # Bidirectional pins
-    uio[0]: "cycle_count[0] (BIST) / b_in[0] (normal)"
-    uio[1]: "cycle_count[1] (BIST) / b_in[1] (normal)"
-    uio[2]: "cycle_count[2] (BIST) / b_in[2] (normal)"
-    uio[3]: "cycle_count[3] (BIST) / b_in[3] (normal)"
-    uio[4]: "cycle_count[4] (BIST) / b_in[4] (normal)"
-    uio[5]: "cycle_count[5] (BIST) / b_in[5] (normal)"
-    uio[6]: "a_in[6] (input)"
-    uio[7]: "a_in[7] (input)"
+    uo[3]: "sum_out[3]"
+    uo[4]: "sum_out[4]"
+    uo[5]: "sum_out[5]"
+    uo[6]: "sum_out[6]"
+    uo[7]: "sum_out[7]"
+    uio[0]: "cycle_count[0]"
+    uio[1]: "cycle_count[1]"
+    uio[2]: "cycle_count[2]"
+    uio[3]: "cycle_count[3]"
+    uio[4]: "cycle_count[4]"
+    uio[5]: "cycle_count[5]"
+    uio[6]: "a_in[6]"
+    uio[7]: "a_in[7]"
 
 # Do not change!
 yaml_version: 6
