@@ -1,56 +1,51 @@
 # Tiny Tapeout project information
+
 project:
-  title:        ""      # Project title
-  author:       ""      # Your name
-  discord:      ""      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
-  description:  ""      # One line description of what your project does
-  language:     "Verilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
-  clock_hz:     0       # Clock frequency in Hz (or 0 if not applicable)
+  title: "BIST-8: Built-In Self-Test for 8-bit CLA Adder"
+  author: "Mario Garcia Jimenez"
+  discord: ""
+  description: "BIST architecture for an 8-bit Carry-Lookahead Adder. Includes 12-bit LFSR pattern generator, 16-bit MISR response compactor, fault injection, and 4-state FSM controller."
+  language: "Verilog"
+  clock_hz: 10000000  # 10MHz nominal (TT IHP)
 
-  # How many tiles your design occupies? A single tile is about 340x160 uM.
-  tiles: "1x1"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 3x4 or 4x4
+  tiles: "1x1"
 
-  # Your top module name must start with "tt_um_". Make it unique by including your github username:
-  top_module:  "tt_um_example"
+  top_module: "tt_um_mgj_bist8"
 
-  # List your project's source files here.
-  # Source files must be in ./src and you must list each source file separately, one per line.
-  # Don't forget to also update `PROJECT_SOURCES` in test/Makefile.
   source_files:
-    - "project.v"
+    - "bist8_core.v"
+    - "bist8_tt.v"
 
-# The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
-# This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
-pinout:
-  # Inputs
-  ui[0]: ""
-  ui[1]: ""
-  ui[2]: ""
-  ui[3]: ""
-  ui[4]: ""
-  ui[5]: ""
-  ui[6]: ""
-  ui[7]: ""
+  pinout:
+    # Inputs
+    ui[0]: "bist_en (1=BIST mode, 0=normal)"
+    ui[1]: "fault_inject (SA0 on bit3)"
+    ui[2]: "a_in[0]"
+    ui[3]: "a_in[1]"
+    ui[4]: "a_in[2]"
+    ui[5]: "a_in[3]"
+    ui[6]: "a_in[4]"
+    ui[7]: "a_in[5]"
 
-  # Outputs
-  uo[0]: ""
-  uo[1]: ""
-  uo[2]: ""
-  uo[3]: ""
-  uo[4]: ""
-  uo[5]: ""
-  uo[6]: ""
-  uo[7]: ""
+    # Outputs
+    uo[0]: "bist_pass"
+    uo[1]: "bist_fail"
+    uo[2]: "bist_done"
+    uo[3]: "sum_out[3] (normal mode)"
+    uo[4]: "sum_out[4] (normal mode)"
+    uo[5]: "sum_out[5] (normal mode)"
+    uo[6]: "sum_out[6] (normal mode)"
+    uo[7]: "sum_out[7] (normal mode)"
 
-  # Bidirectional pins
-  uio[0]: ""
-  uio[1]: ""
-  uio[2]: ""
-  uio[3]: ""
-  uio[4]: ""
-  uio[5]: ""
-  uio[6]: ""
-  uio[7]: ""
+    # Bidirectional pins
+    uio[0]: "cycle_count[0] (BIST) / b_in[0] (normal)"
+    uio[1]: "cycle_count[1] (BIST) / b_in[1] (normal)"
+    uio[2]: "cycle_count[2] (BIST) / b_in[2] (normal)"
+    uio[3]: "cycle_count[3] (BIST) / b_in[3] (normal)"
+    uio[4]: "cycle_count[4] (BIST) / b_in[4] (normal)"
+    uio[5]: "cycle_count[5] (BIST) / b_in[5] (normal)"
+    uio[6]: "a_in[6] (input)"
+    uio[7]: "a_in[7] (input)"
 
 # Do not change!
 yaml_version: 6
